@@ -28,15 +28,43 @@ class MLinkedList {
         }
         prevNode = n;
     }
+    
     public void printLinkedList() {
+    	System.out.println("List nodes: ");
         if (root == null) {
             System.out.println("Empty list");
         }
         Node n = root;
         while(n != null){
-            System.out.println(n.value);
+            System.out.print(n.value + ", ");
             n = n.next;
         }
+        System.out.println("");
+    }
+    
+    public boolean removeNode(int x) {
+    	
+    	if (root != null && root.value == x) {
+    		root = root.next;
+    		return true;
+    	}
+    	
+    	Node n = root.next;
+    	Node prev = root;
+    	
+    	while(n != null) {
+    		
+    		if (n.value == x) {
+    			prev.next = n.next;
+    			return true;
+    		}
+    		prev = n;
+    		n = n.next;
+    		
+    	}
+    	
+    	
+    	return false;
     }
 }
 
@@ -53,9 +81,14 @@ public class LinkedListExample {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String line;
         MLinkedList list = new MLinkedList();
-        for(int j=1; j<= 4; j++) {
+        
+        for(int j=1; j<= 4; j++) { // Add nodes 1,2,3,4
              list.addNode(j);
         }
-        list.printLinkedList();
+        list.printLinkedList();  // Print list nodes. {1,2,3,4}
+        
+        list.removeNode(3); //remove node 3
+        
+        list.printLinkedList();  // Print list nodes. {1,2,4}
     }
 }
