@@ -47,11 +47,46 @@ public class MBinaryTree {
 		}
 	}
 	
+	public void removeNode(int x) {
+		/**
+		 * If this node value is x.
+		 *   If this node has right child -> right child becomes the new right child of this node's parent.
+		 * 		If this node has left child -> right child becomes parent of left child.
+		 */
+		
+		//TODO:Complete work in progress.
+		
+		TreeNode node = root;
+		TreeNode parent = node;
+		
+	
+		while(node != null) {
+			
+			if (x < node.value) {
+				parent = node;
+				node = node.left;
+				
+				continue;
+			} else if (x > node.value){
+				parent = node;
+				node = node.right;
+				continue;
+			}
+			
+			if (x == node.value) {
+				
+			}
+		}
+		
+		
+		
+	}
+	
 	
 	public static void printInOrderNodeValue(TreeNode node) {
 		if (node != null) {
-			System.out.println(node.value);
 			printInOrderNodeValue(node.left);
+			System.out.println(node.value);
 			printInOrderNodeValue(node.right);
 		}
 	}
@@ -66,7 +101,9 @@ public class MBinaryTree {
 			System.out.println("Empty");
 			return;
 		}
+		System.out.println("Tree nodes: ");
 		printInOrderNodeValue(node);
+		System.out.println("----------");
 	}
 	
 	
