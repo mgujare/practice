@@ -13,6 +13,12 @@ import java.util.Queue;
  * 3. Adjacency Matrix
  * 4. Queue 
  *
+ *	A--------D-------E
+ *  |         \     /
+ *  |          \___/
+ *  |	       /   \ 
+ *  |         /     \ 
+ *  B--------C       F
  */
 
 
