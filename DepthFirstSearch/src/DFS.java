@@ -2,16 +2,17 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 
 /**
  * 
  * @author mahesh
  * 
- * 1. Class BFS
+ * 1. Class DFS
  * 2. Class Vertex (Node, isVisited)
  * 3. Adjacency Matrix
- * 4. Queue 
+ * 4. Stack 
  *
  *  A--------D-------E
  *  |         \     /
@@ -26,16 +27,16 @@ public class DFS {
 	
 	public static void main(String args[]) {
 		
-		DFS bfs = new DFS();
+		DFS dfs = new DFS();
 		
-		Graph graph = bfs.new Graph();
+		Graph graph = dfs.new Graph();
 		
-		graph.vertices.add(bfs.new Vertex('A'));
-		graph.vertices.add(bfs.new Vertex('B'));
-		graph.vertices.add(bfs.new Vertex('C'));
-		graph.vertices.add(bfs.new Vertex('D'));
-		graph.vertices.add(bfs.new Vertex('E'));
-		graph.vertices.add(bfs.new Vertex('F'));
+		graph.vertices.add(dfs.new Vertex('A'));
+		graph.vertices.add(dfs.new Vertex('B'));
+		graph.vertices.add(dfs.new Vertex('C'));
+		graph.vertices.add(dfs.new Vertex('D'));
+		graph.vertices.add(dfs.new Vertex('E'));
+		graph.vertices.add(dfs.new Vertex('F'));
 		
 		graph.addEdge(0, 1);
 		graph.addEdge(0, 3);
@@ -44,7 +45,7 @@ public class DFS {
 		graph.addEdge(3, 4);
 		graph.addEdge(3, 5);
 		
-		graph.bfsTraverse();
+		graph.dfsTraverse();
 		
 	}
 	
@@ -55,7 +56,7 @@ public class DFS {
 		int adjMatrix[][] = new int[MAX_SIZE][MAX_SIZE];
 		
 		List<Vertex> vertices = new ArrayList<Vertex>();
-		Queue<Vertex> verticesQ = new LinkedList<Vertex>();
+		Stack<Vertex> verticesStack = new Stack<Vertex>();
 		
 		Graph() {
 			
@@ -66,26 +67,27 @@ public class DFS {
 			adjMatrix[endIndex][startIndex] = 1;
 		}
 		
-		public void bfsTraverse() {
+		public void dfsTraverse() {
 			
 			int index = 0;
 			
 			Vertex v = vertices.get(index);
-			verticesQ.add(v);
+			verticesStack.add(v);
 			v.isVisited = true;
 			
 			System.out.println(v.label);
 			
-			while (!verticesQ.isEmpty()) {
-				verticesQ.remove();
-				while (getUnvisitedNeighbor(index) != null) {
-					Vertex neighbor = getUnvisitedNeighbor(index);
+			while (!verticesStack.isEmpty()) {
+				Vertex v1 = verticesStack.peek();
+				index = vertices.indexOf(v1);
+				Vertex neighbor = getUnvisitedNeighbor(index);
+				if (neighbor != null) {
 					neighbor.isVisited = true;
-					verticesQ.add(neighbor);
+					verticesStack.add(neighbor);
 					System.out.println(neighbor.label);
+				} else {
+					verticesStack.pop();
 				}
-				
-				index ++;
 			}
 			
 		}
