@@ -66,7 +66,7 @@ public class AnagramTest {
 		
 		System.out.println(" Test B " + test.isAnagram("LISTEN", "SILENt", true));
 		
-		System.out.println(" Test C " + test.isAnagram("triangle", "integral", false));
+		System.out.println(" Test C " + test.isAnagram("ttriangle", "integralt", false));
 	}
 	
 
