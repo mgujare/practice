@@ -4,11 +4,7 @@ import java.io.InputStreamReader;
 
 /**
      * Definition for singly-linked list.
-     * public class ListNode {
-     *     int val;
-     *     ListNode next;
-     *     ListNode(int x) { val = x; }
-     * }
+     * 
      */
 
 
@@ -36,7 +32,7 @@ class MLinkedList {
         }
         Node n = root;
         while(n != null){
-            System.out.print(n.value + ", ");
+            System.out.print(n.val + ", ");
             n = n.next;
         }
         System.out.println("");
@@ -44,7 +40,7 @@ class MLinkedList {
     
     public boolean removeNode(int x) {
     	
-    	if (root != null && root.value == x) {
+    	if (root != null && root.val == x) {
     		root = root.next;
     		return true;
     	}
@@ -54,7 +50,7 @@ class MLinkedList {
     	
     	while(n != null) {
     		
-    		if (n.value == x) {
+    		if (n.val == x) {
     			prev.next = n.next;
     			return true;
     		}
@@ -65,14 +61,6 @@ class MLinkedList {
     	
     	
     	return false;
-    }
-}
-
-class Node {
-  int value;
-  Node next;
-    Node(int val) {
-        this.value = val;
     }
 }
 
