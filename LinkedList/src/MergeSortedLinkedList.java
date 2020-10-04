@@ -31,20 +31,20 @@ public class MergeSortedLinkedList {
 		l2n3.next = l2n4;
 		l2n4.next = l2n5;
 		l2n5.next = l2n6;
-		
+
 		System.out.println("Linked List One ");
 		prettyPrintList(ll1);
-		
+
 		System.out.println("\n Linked List Two ");
 		prettyPrintList(ll2);
-		
+
 		Node result = mergeSortedLinkedList(ll1, ll2);
-		
+
 		System.out.println("\n Linked List Merged ");
 		prettyPrintList(result);
-		
+
 	}
-	
+
 	public static void prettyPrintList(Node n) {
 		while (n != null) {
 			System.out.print(" " + n.val + " ->");
@@ -79,12 +79,24 @@ public class MergeSortedLinkedList {
 				current.next = node2;
 				node2 = node2.next;
 			}
-			
+
 			current = current.next;
 		}
 
 		return head;
 
 	}
+
+	/**
+	 *   Linked List One 
+		 23 -> 53 -> 72 -> 87 -> 91 ->
+		 Linked List Two 
+		 2 -> 24 -> 36 -> 49 -> 58 -> 78 -> 117 ->
+		 Linked List Merged 
+		 2 -> 23 -> 24 -> 36 -> 49 -> 53 -> 58 -> 72 -> 78 -> 117 ->
+	 * 
+	 * 
+	 * 
+	 */
 
 }
