@@ -70,7 +70,21 @@ public class MergeSortedLinkedList {
 
 		if (current == node2) node2 = node2.next;
 
-		while (node1.next != null && node2.next != null) {
+		while (node1 != null || node2 != null) {
+			
+			if (node1 == null) {
+				current.next = node2;
+				node2 = node2.next;
+				current = current.next;
+				continue;
+			}
+			
+			if (node2 == null) {
+				current.next = node1;
+				node1 = node1.next;
+				current = current.next;
+				continue;
+			}
 
 			if (node1.val < node2.val) {
 				current.next = node1;
@@ -93,7 +107,7 @@ public class MergeSortedLinkedList {
 		 Linked List Two 
 		 2 -> 24 -> 36 -> 49 -> 58 -> 78 -> 117 ->
 		 Linked List Merged 
-		 2 -> 23 -> 24 -> 36 -> 49 -> 53 -> 58 -> 72 -> 78 -> 117 ->
+		 2 -> 23 -> 24 -> 36 -> 49 -> 53 -> 58 -> 72 -> 78 -> 87 -> 91 -> 117 ->
 	 * 
 	 * 
 	 * 
